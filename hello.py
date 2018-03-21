@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 app = Flask("MyApp")
 
@@ -15,5 +15,19 @@ def hello2():
 @app.route("/himalee")
 def desert():
     return "I love tiramisu!"
+
+@app.route("/<name>")
+def hello_someone(name):
+    return render_template("hello.html", name=name.title())
+
+@app.route("/signup", methods=["POST"]) #methods specified as post get vs post. see in terminal - get and post.
+                                        #Get- give me the webpage that I am looking for.
+                                        #Post- I want to give the server some information to do something with
+                                        #needed to be a post because it is receiving form data
+                                        #get is the default 
+def sign_up():
+    form_data = request.form
+    print form_data["email"] #must match id in html(input type)
+    return "All OK"
 
 app.run(debug=True) #runs application

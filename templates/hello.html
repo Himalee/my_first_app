@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+    <head>
+      <title>My Flask App Page</title>
+      <link rel="stylesheet" type="text/css" href="{{ url_for("static",
+      filename="css/main.css") }}">
+    </head>
+
+    <body>
+      {% if name %}
+        <p>Hello {{name}}!</p> <!--variable name in double brackets - jinja syntax that allows us to access..?-->
+      {% else %}
+        <p>Hello anonymous person!</p>
+      {% endif %} <!--% in jinja syntax to allow us to write if else logic-->
+
+      <p>Let's keep in touch!</p>
+        <div id="contact-form">
+            <form method="post" action="/signup">
+              <label for="email">Email address:</label>
+                <input type="email" id="email" name="email"required="required">
+                <input type="submit" value="Submit" id="submit-button">
+
+            </form>
+      </div>
+
+    </body>
+
+</html>
